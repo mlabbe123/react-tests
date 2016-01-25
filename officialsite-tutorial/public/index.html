@@ -11,6 +11,7 @@
     </head>
     <body>
         <div id="content"></div>
+
         <script type="text/babel">
 
             var CommentList = React.createClass({
@@ -41,9 +42,19 @@
                 handleTextChange: function(e) {
                     this.setState({text: e.target.value});
                 },
+                handleSubmit: function(e) {
+                    e.preventDefault();
+                    var author = this.state.author.trim();
+                    var text = this.state.text.trim();
+                    if (!text || !author) {
+                        return;
+                    }
+                    this.props.onCommentSubmit({author: author, text: text});
+                    this.setState({author: '', text: ''});
+                },
                 render: function() {
                     return (
-                        <form className="commentForm">
+                        <form className="commentForm" onSubmit={this.handleSubmit}>
                             <input
                                 type="text"
                                 placeholder="Your name"
@@ -76,6 +87,25 @@
                         }.bind(this)
                     });
                 },
+                handleCommentSubmit: function(comment) {
+                    var comments = this.state.data;
+                    comment._id = Date.now();
+                    var newComments = comments.concat([comment]);
+                    this.setState({data: newComments})
+                    $.ajax({
+                        url: this.props.url,
+                        dataType: 'json',
+                        type: 'POST',
+                        data: comment,
+                        success: function(data) {
+                            this.setState({data: data});
+                        }.bind(this),
+                        error: function(xhr, status, err) {
+                            this.setState({data: comments});
+                            console.error(this.props.url, status, err.toString());
+                        }.bind(this)
+                    });
+                },
                 getInitialState: function() {
                     return {data: []};
                 },
@@ -88,7 +118,7 @@
                         <div className="CommentBox">
                             <h1>Comments</h1>
                             <CommentList data={this.state.data}/>
-                            <CommentForm />
+                            <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
                         </div>
                     );
                 }
@@ -113,7 +143,7 @@
             });
 
             ReactDOM.render(
-                <CommentBox url="/api/comments" pollInterval={2000} />,
+                <CommentBox url="/api/comments" pollInterval={10000} />,
                 document.getElementById('content')
             );
         </script>
