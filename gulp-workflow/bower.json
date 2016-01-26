@@ -1,0 +1,22 @@
+{
+  "name": "reactjsTest-browserify",
+  "description": "",
+  "main": "",
+  "authors": [
+    "mlabbe-hmh <mathieu.labbe@hmhco.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mlabbe123/react-tests",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "react": "~0.14.6"
+  }
+}
