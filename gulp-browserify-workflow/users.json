@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "display_name": "baba",
+        "email": "baba@fake.com",
+        "group": 1
+    },
+    {
+        "id": 2,
+        "display_name": "steeve",
+        "email": "steeve@fake.com",
+        "group": 1
+    },
+    {
+        "id": 3,
+        "display_name": "lisa",
+        "email": "lisa@fake.com",
+        "group": 3
+    },
+    {
+        "id": 4,
+        "display_name": "baboucha",
+        "email": "baboucha@fake.com",
+        "group": 2
+    },
+    {
+        "id": 5,
+        "display_name": "nase",
+        "email": "nase@fake.com",
+        "group": 2
+    },
+    {
+        "id": 6,
+        "display_name": "Paul",
+        "email": "paul@fake.com",
+        "group": 2
+    },
+    {
+        "id": 7,
+        "display_name": "Zeeraa",
+        "email": "zeeraa@fake.com",
+        "group": 1
+    }
+]

@@ -3,5 +3,13 @@ extends ./root
 block pageTitle
     title Users | React Gulp-Browserify workflow
 
+
 block bodyContent
     span We should list users here
+
+    div(id="userList-wrapper")
+
+
+block jsIncludes
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js')
+    script(src="js/pages/users.bundle.js")

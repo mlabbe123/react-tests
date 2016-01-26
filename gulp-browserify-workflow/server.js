@@ -17,6 +17,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
+var USERS_FILE = path.join(__dirname, 'users.json');
 
 app.set('port', (process.env.PORT || 3030));
 
@@ -48,6 +49,18 @@ app.get('/api/comments', function(req, res) {
     res.json(JSON.parse(data));
   });
 });
+
+app.get('/api/users', function(req, res) {
+  fs.readFile(USERS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(JSON.parse(data));
+  });
+});
+
 
 app.post('/api/comments', function(req, res) {
   fs.readFile(COMMENTS_FILE, function(err, data) {
