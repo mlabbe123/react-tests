@@ -1,0 +1,63 @@
+#userList-container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.userList-wrapper {
+
+}
+
+.userList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 1rem 1rem 0;
+
+	.userList-item {
+		width: 22%;
+		margin-bottom: 1rem;
+		background-color: #E2E2E2;
+	}
+}
+
+.userList-item-pic {
+	// display: table-cell;
+	width: 25%;
+}
+
+.userList-item-infos {
+	// display: table-cell;
+	width: 75%;
+}
+
+.userList-item-infos-item {
+	display: block;
+}
+
+
+// TECHNIQUE TO ALIGN ITEMS TO THE LEFT IN ROWS THAT ARE NOT FULL.
+// .container {
+//   width: 1024px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between; 
+//   background-color: #ffffff;
+//   padding: 1em;
+//   margin: 1em auto;
+  
+//   &:after {
+//     content: "";
+//     flex: auto;
+//   }
+  
+//   .item {
+//     height: 10em;
+//     width: 25%;
+//     padding: 0.5em;
+//     box-sizing: border-box;
+    
+//     img {
+//       width: 100%;
+//     }
+//   }
+// }
