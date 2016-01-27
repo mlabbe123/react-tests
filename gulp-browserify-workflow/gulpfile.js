@@ -7,9 +7,14 @@ var gulp        = require('gulp'),
     reactify    = require('reactify'),
     streamify   = require('gulp-streamify'),
     rename      = require('gulp-rename'),
-    es          = require('event-stream');
+    es          = require('event-stream'),
+    sass        = require('gulp-sass');
 
-    
+
+// =============================
+// JS
+// =============================
+
 // Watch task for a single bundle.
 gulp.task('watch-single', function() {
     gulp.watch('./templates/**/*.jade', []);
@@ -68,12 +73,22 @@ gulp.task('bundle-pages-js', function() {
     return es.merge.apply(null, tasks);
 });
 
+// =============================
+// SASS
+// =============================
+gulp.task('compile-sass', function() {
+    gulp.src('./frontend/sass/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./dist/css'));
+});
+
 // Watch task for a multiple bundles.
 gulp.task('watch-multiple', function() {
     gulp.watch(['./frontend/js/**/*.jsx', './frontend/js/**/*.js'], ['bundle-pages-js']);
+    gulp.watch(['./frontend/sass/**/*.scss'], ['compile-sass']);
 });
 
 
 gulp.task('default', ['watch']);
 
-gulp.task('watch-multiple-bundles', ['bundle-pages-js', 'watch-multiple']);
+gulp.task('watch-multiple-bundles', ['bundle-pages-js', 'compile-sass', 'watch-multiple']);
