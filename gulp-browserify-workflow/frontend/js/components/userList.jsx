@@ -1,11 +1,15 @@
 var React = require('react');
 
+
 var UserInfoBox = React.createClass({
 	render: function() {
 		return (
 			<li className="userList-item" data-id={this.props.id} data-group={this.props.group}>
-				<span>Name: {this.props.display_name}</span>
-				<span>email: {this.props.email}</span>
+				<img src="img/user.png" className="userList-item-pic"/>
+				<div className="userList-item-infos">
+					<span className="userList-item-infos-item">Name: {this.props.display_name}</span>
+					<span className="userList-item-infos-item">email: {this.props.email}</span>
+				</div>
 			</li>
 		)
 	}

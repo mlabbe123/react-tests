@@ -4,5 +4,5 @@ var ReactDOM = require('react-dom');
 var UserList = require('../components/userList.jsx');
 
 ReactDOM.render(<UserList url="/api/users" />,
-    document.getElementById('userList-wrapper')
+    document.getElementById('userList-container')
 );
