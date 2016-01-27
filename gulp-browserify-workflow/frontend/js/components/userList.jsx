@@ -1,5 +1,35 @@
 var React = require('react');
 
+var userFilterBox = React.createClass({
+	render: function() {
+		return (
+			<div className="userFilters-wrapper">
+				<UserGroupFilterSelect/>
+			</div>
+		)
+	}
+});
+
+var UserGroupFilterSelect = React.createClass({
+
+	handleChange: function(e) {
+		console.log(e.target.value);
+		window.history.pushState({}, '', '?group=' + e.target.value);
+	},
+	render: function() {
+		var groupOptions = this.props.groups.map(function(group) {
+			return (
+				<option value={group.id}>{group.id}</option>
+			)
+		});
+
+		return (
+			<select onChange={this.handleChange}>
+				{groupOptions}
+			</select>
+		)
+	}
+});
 
 var UserInfoBox = React.createClass({
 	render: function() {
@@ -55,6 +85,9 @@ var UserListBox = React.createClass({
 		return (
 			<div className="userList-wrapper">
 				<h1>Users</h1>
+				<div className="filters">
+					<UserGroupFilterSelect groups={[{'id': '1'}, {'id': '2'}]}/>
+				</div>
 				<UserList data={this.state.data}/>
 			</div>
 		)
