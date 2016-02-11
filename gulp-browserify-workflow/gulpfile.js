@@ -1,14 +1,14 @@
-var gulp        = require('gulp'),
-    uglify      = require('gulp-uglify'),
-    htmlreplace = require('gulp-html-replace'),
-    source      = require('vinyl-source-stream'),
-    browserify  = require('browserify'),
-    watchify    = require('watchify'),
-    reactify    = require('reactify'),
-    streamify   = require('gulp-streamify'),
-    rename      = require('gulp-rename'),
-    es          = require('event-stream'),
-    sass        = require('gulp-sass');
+var gulp        = require('gulp');
+var uglify      = require('gulp-uglify');
+var htmlreplace = require('gulp-html-replace');
+var source      = require('vinyl-source-stream');
+var browserify  = require('browserify');
+var watchify    = require('watchify');
+var reactify    = require('reactify');
+var streamify   = require('gulp-streamify');
+var rename      = require('gulp-rename');
+var es          = require('event-stream');
+var sass        = require('gulp-sass');
 
 
 // =============================
@@ -48,7 +48,7 @@ gulp.task('watch-single', function() {
 // one-time task for multiple bundles.
 gulp.task('bundle-pages-js', function() {
     var files = [
-        './frontend/js/pages/home.js',
+        './frontend/js/pages/comments.js',
         './frontend/js/pages/users.js'
     ];
 
