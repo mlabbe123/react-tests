@@ -1,2 +1,5 @@
 # npm packages files
 node_modules/
+
+# distribution files
+dist/
