@@ -138,12 +138,12 @@ var CommentBox = React.createClass({
     },
     _updateComments: function(comment) {
         var comments = this.state.data;
-        var commentsCount = comments.length;
+        var commentsCount = comments.length + 1;
 
         comments.push(comment);
         this.setState({
             data: comments,
-            commentCount: commentsCount
+            commentsCount: commentsCount
         });
     },
     componentDidMount: function() {
